@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tic Tac Toe - Computer</title>
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <!-- Beginning Menu -->
+  <div class="menu" id="mainMenu">
+    <button id="startBtn">Start Game</button>
+    <button id="exitBtnMenu">Exit</button>
+  </div>
+  <!-- Game Mode Setup -->
+  <div class="setup" id="setupDiv" style="display:none;">
+    <p>Select Mode:</p>
+    <button id="pvpBtn">Player vs Player</button>
+    <button id="pvcBtn">Player vs Computer</button>
+    <button id="backBtn">Back</button>
+  </div>
+  <!-- Game Board -->
+  <div class="board-container" style="display:none;">
+    <div class="message"></div>
+    <div class="board" role="grid" aria-label="Tic Tac Toe Board">
+      <div class="cell" data-index="0" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="1" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="2" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="3" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="4" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="5" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="6" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="7" role="gridcell" tabindex="0"></div>
+      <div class="cell" data-index="8" role="gridcell" tabindex="0"></div>
+    </div>
+  </div>
+  <!-- Popup Message -->
+  <div id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-message">
+    <div class="popup-content">
+      <p id="popup-message"></p>
+      <button id="retryBtn">Retry</button>
+      <button id="exitBtnPopup">Exit</button>
+    </div>
+  </div>
+  <!-- Link to JavaScript file -->
+  <script src="script.js"></script>
+</body>
+</html>

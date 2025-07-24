@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('wp12472923-thar-hd-wallpapers.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+  color: #222;
+}
+h1 {
+  font-family: 'Luckiest Guy', cursive;
+  color: white;
+  font-size: 3rem;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000,
+               -1px  1px 0 #000, 1px  1px 0 #000;
+  margin-bottom: 20px;
+  transition: color 0.5s ease;
+  transform: rotate(-5deg);
+  user-select: none;
+}
+.menu, .setup, .board-container {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  border-radius: 8px;
+  background-color: #3498db;
+  color: white;
+  user-select: none;
+}
+button:hover:not(:disabled) {
+  background-color: #2980b9;
+  transform: scale(1.1);
+}
+button:disabled {
+  background-color: #7f8c8d;
+  cursor: default;
+  transform: none;
+}
+.board-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+}
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  gap: 8px;
+  margin-bottom: 20px;
+  background-color: rgba(200, 200, 200, 0.8);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.2);
+}
+.cell {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid #4a90e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  border-radius: 10px;
+}
+.cell:hover {
+  background-color: #d4ecfa;
+  transform: scale(1.05);
+}
+.cell.x {
+  color: #e74c3c;
+}
+.cell.o {
+  color: #3498db;
+}
+@keyframes push {
+  0% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
+  50% { transform: scale(0.9); box-shadow: 0 2px 4px rgba(0,0,0,0.2);}
+  100% { transform: scale(1); box-shadow: 0 4px 8px rgba(0,0,0,0.1);}
+}
+.cell.selected { animation: push 0.3s ease; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.board-container.shake { animation: shake 0.5s ease; }
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 5px #58d68d, 0 0 10px #58d68d; color: #2ecc71;}
+  50% { text-shadow: 0 0 20px #27ae60, 0 0 30px #27ae60; color: #27ae60;}
+}
+.message.win-glow { animation: glow 1.5s ease infinite; }
+.message {
+  font-size: 22px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+}
+@keyframes win-pop {
+  0% { opacity: 0; transform: scale(0.8); color: #2ecc71; text-shadow: none;}
+  50% { opacity: 1; transform: scale(1.2); color: #27ae60; text-shadow: 0 0 10px #27ae60;}
+  100% { opacity: 1; transform: scale(1); color: #27ae60; text-shadow: 0 0 5px #27ae60;}
+}
+.message.win-pop { animation: win-pop 1s ease forwards; }
+#popup {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+#popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+#popup .popup-content {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  max-width: 300px;
+  width: 90%;
+}
+#popup .popup-content p {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+#popup .popup-content button {
+  margin: 0 10px;
+  font-size: 16px;
+  padding: 10px 25px;
+}
